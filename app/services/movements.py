@@ -17,3 +17,4 @@ class MovesServices:
     def create_transfers(self, obj_transfer : Transferencias):
         result = add_transfers(obj_transfer)
         return result
+    

@@ -93,3 +93,13 @@ def add_transfers(obj_transfer):
         return None
     finally:
         sql.disconnect()
+
+
+# def get_movements(user_id : str):
+#     logs.login_info('Obteniendo Movimientos')
+#     query = f'''
+#         SELECT
+
+#         FROM public.ingresos_egresos AS I
+#         INEER 
+#     '''
