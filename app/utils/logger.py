@@ -1,7 +1,11 @@
 import logging
+import os
 from logging.handlers import RotatingFileHandler, TimedRotatingFileHandler
 
-logger = logging.getLogger('api?finance')
+LOG_DIR = os.getenv('LOG_DIR', '/app/log')
+os.makedirs(LOG_DIR, exist_ok=True)
+
+logger = logging.getLogger('api_finance')
 logger.setLevel(logging.DEBUG)
 
 # Formato del logger
