@@ -1,5 +1,5 @@
 from fastapi import APIRouter, Depends, status
-from typing import List
+from fastapi.responses import JSONResponse
 
 from app.services.movements import MovesServices
 from app.schemas.finance_schemas import IngresoGasto, Pendientes, Transferencias
@@ -21,7 +21,19 @@ def create_ingreso_gasto(
     :param ie_in: Descripción
     :type ie_in: IngresoGasto
     '''
-    return moves_services.create_ie(ie_in)
+    result = moves_services.create_ie(ie_in)
+    return JSONResponse(
+        status_code=status.HTTP_201_CREATED,
+        content= {
+            'message' : 'Transación registrada exitosamente',
+            'status' : 'success',
+            'data' : result,
+            'metadata' : {
+                'tipo_registrado' : ie_in.tipo,
+                'monto' : ie_in.monto
+            }
+        }
+    )
 
 @router.post(
     "/pendiente",
@@ -40,7 +52,20 @@ def create_pendiente(
     :param pend_services: Descripción
     :type pend_services: MovesServices
     '''
-    return pend_services.create_pendings(obj_pend)
+    result =  pend_services.create_pendings(obj_pend)
+    return JSONResponse(
+        status_code=status.HTTP_201_CREATED,
+        content={
+            'message' : 'Pendiente agregado con éxito',
+            'status' : 'success',
+            'data' : result,
+            'metadata' : {
+                'prioridad' : obj_pend.prioridad,
+                'recurrente' : obj_pend.recurrente,
+                'monto' : obj_pend.monto
+            }
+        }
+    )
 
 @router.post(
     "/transferencia",

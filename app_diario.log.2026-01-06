@@ -1,0 +1,1 @@
+2026-01-06 22:58:39 - api?finance - ERROR - login_error:37 - Error en el proceso: Add IE : Detalles : Agrando IE ('new row for relation "ingresos_egresos" violates check constraint "ingresos_egresos_tipo_check"\nDETAIL:  Failing row contains (778516, HMCRPLO94HDGDYFTGD12599, 5600.00, educacion, test, 2026-01-05, banco1, GASTO, 2026-01-07 04:58:12.305).\n',)
